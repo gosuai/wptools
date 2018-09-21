@@ -15,6 +15,7 @@ import sys
 
 import certifi
 import pycurl
+import requests
 
 from . import __title__, __contact__, __version__
 
@@ -56,9 +57,9 @@ class WPToolsRequest(object):
 
         # consistently faster than requests by 3x
         #
-        # r = requests.get(url,
-        #                  headers={'User-Agent': self.user_agent})
-        # return r.text
+        r = requests.get(url,
+                         headers={'User-Agent': user_agent()})
+        return r.text
 
         crl = self.cobj
 
